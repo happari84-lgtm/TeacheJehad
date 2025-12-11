@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الدفع — Jhad Academy</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="top"><a class="home" href="index.html">العودة للرئيسية</a></header>
+<main class="container">
+  <h1>إتمام التسجيل</h1>
+  <p>سوف تفتح نافذة واتساب لإرسال بيانات التسجيل والدفع مباشرة إلى جهاد.</p>
+  <form id="payForm">
+    <label>الاسم<input type="text" id="name" required></label>
+    <label>رقم الهاتف<input type="text" id="phone" required placeholder="+967772451535"></label>
+    <label>اختر الباقة / الدورة
+      <select id="choice">
+        <option value="الباقة الأساسية">الباقة الأساسية — $10</option>
+        <option value="الباقة المتوسطة">الباقة المتوسطة — $20</option>
+        <option value="الباقة المميزة">الباقة المميزة — $35</option>
+      </select>
+    </label>
+    <label>ملاحظات (اختياري)<textarea id="note"></textarea></label>
+    <button type="button" id="waBtn" class="btn">التسجيل عبر واتساب</button>
+  </form>
+</main>
+<footer class="footer card"><a href="index.html">العودة</a></footer>
+<script>
+document.getElementById('waBtn').addEventListener('click', function(){
+  const name = encodeURIComponent(document.getElementById('name').value||'لا يوجد اسم');
+  const phone = encodeURIComponent(document.getElementById('phone').value||'+967772451535');
+  const choice = encodeURIComponent(document.getElementById('choice').value);
+  const note = encodeURIComponent(document.getElementById('note').value||'');
+  const msg = `مرحباً%20جهاد%20أرغب%20بالتسجيل.%0Aالاسم:%20${name}%0Aالهاتف:%20${phone}%0Aالاختيار:%20${choice}%0Aملاحظات:%20${note}`;
+  window.location.href = `https://wa.me/967772451535?text=${msg}`;
+});
+</script>
+</body>
+</html>
